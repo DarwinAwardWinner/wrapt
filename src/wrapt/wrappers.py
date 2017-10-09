@@ -415,7 +415,6 @@ class ObjectProxy(with_metaclass(_ObjectProxyMetaType)):
     def __iter__(self):
         return iter(self.__wrapped__)
 
-class CopyableObjectProxy(ObjectProxy):
     def __copy__(self):
         copied_wrapped = copy.copy(self.__wrapped__)
         return type(self)(copied_wrapped)

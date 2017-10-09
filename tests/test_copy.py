@@ -10,7 +10,7 @@ class TestCopy(unittest.TestCase):
         orig = {'a': 1, 'b': {'x': 10, 'y': 11}}
         # Make a circular reference
         orig['c'] = orig
-        wrapper = wrapt.CopyableObjectProxy(orig)
+        wrapper = wrapt.ObjectProxy(orig)
         copied = copy.copy(orig)
         copied_wrapper = copy.copy(wrapper)
         # We can't compare the whole dicts because of the circular
@@ -23,7 +23,7 @@ class TestCopy(unittest.TestCase):
         orig = {'a': 1, 'b': {'x': 10, 'y': 11}}
         # Make a circular reference
         orig['c'] = orig
-        wrapper = wrapt.CopyableObjectProxy(orig)
+        wrapper = wrapt.ObjectProxy(orig)
         deepcopied = copy.deepcopy(orig)
         deepcopied_wrapper = copy.deepcopy(wrapper)
         self.assertEqual(wrapper['a'], deepcopied_wrapper['a'])
